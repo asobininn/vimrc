@@ -80,6 +80,46 @@ nmap <Leader>q <Plug>(quickrun)
 let g:quickrun_config={'*': {'split': ''}}
 
 "==========
+"vim-airline
+"==========
+set ambiwidth=double
+set showtabline=2 " 常にタブラインを表示
+set t_Co=256 " この設定がないと色が正しく表示されない
+nnoremap <C-p> <Plug>AirlineSelectPrevTab
+nnoremap <C-n> <Plug>AirlineSelectNextTab
+let g:airline_theme = 'light'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+	\ '0': '0 ',
+	\ '1': '1 ',
+	\ '2': '2 ',
+	\ '3': '3 ',
+	\ '4': '4 ',
+	\ '5': '5 ',
+	\ '6': '6 ',
+	\ '7': '7 ',
+	\ '8': '8 ',
+	\ '9': '9 '}
+if !exists('g:airline_symbols')
+		let g:airline_symbols = {}
+endif
+"左側に使用されるセパレータ
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+"右側に使用されるセパレータ
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_symbols.crypt = '鍵' 			"暗号化されたファイル
+let g:airline_symbols.linenr = '¶' 		"行
+let g:airline_symbols.maxlinenr = '㏑' 	"最大行
+let g:airline_symbols.branch = '⭠' 			"gitブランチ
+let g:airline_symbols.paste = 'ρ' 			"ペーストモード
+let g:airline_symbols.spell = 'Ꞩ' 			"スペルチェック
+let g:airline_symbols.notexists = '∄' 	"gitで管理されていない場合
+let g:airline_symbols.whitespace = 'Ξ' "空白の警告(余分な空白など)
+
+"==========
 "dein.vim
 "==========
 if &compatible
@@ -116,6 +156,11 @@ call dein#add('Shougo/dein.vim')
 	" quickrun
 	" 簡易実行
 	call dein#add('thinca/vim-quickrun')
+	" ステータスバーを追加
+	call dein#add('vim-airline/vim-airline')
+	call dein#add('vim-airline/vim-airline-themes')
+	" vimからGit操作をする
+	call dein#add('tpope/vim-fugitive')
 
 call dein#end()
 syntax enable
