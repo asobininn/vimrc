@@ -120,6 +120,18 @@ let g:airline_symbols.notexists = '∄' 	"gitで管理されていない場合
 let g:airline_symbols.whitespace = 'Ξ' "空白の警告(余分な空白など)
 
 "==========
+"winresizer
+"==========
+let g:winresizer_start_key = '<C-T>'
+
+"==========
+"open-browser
+"==========
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+"==========
 "dein.vim
 "==========
 if &compatible
@@ -161,6 +173,10 @@ call dein#add('Shougo/dein.vim')
 	call dein#add('vim-airline/vim-airline-themes')
 	" vimからGit操作をする
 	call dein#add('tpope/vim-fugitive')
+	" ウィンドウ幅を自動調節する
+	call dein#add('simeji/winresizer')
+	" 単語をwebで検索する
+	call dein#add('tyru/open-browser.vim')
 
 call dein#end()
 syntax enable
