@@ -25,10 +25,37 @@ set hlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "=========
+" Shougo/neocomplete
+"=========
+let g:neocomplete#enable_at_startup = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#force_omni_input_patterns.cpp = '[[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+"=========
+" vim-clang
+"=========
+" disable auto completion for vim-clanG
+let g:clang_auto = 0
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
+" default 'longest' can not work with neocomplete
+let g:clang_c_completeopt   = 'menuone'
+let g:clang_cpp_completeopt = 'menuone'
+
+"=========
 " clang options
 "=========
 let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++2a -O2'
+let g:clang_cpp_options = '-std=c++1z -O2 '
+
+"=========
+" clang format
+"=========
 let g:clang_format_auto = 1
 let g:clang_format_style = 'Google'
 let g:clang_check_syntax_auto = 1
@@ -177,6 +204,8 @@ call dein#add('Shougo/dein.vim')
 	call dein#add('simeji/winresizer')
 	" 単語をwebで検索する
 	call dein#add('tyru/open-browser.vim')
+	" 禅モード
+	call dein#add('junegunn/goyo.vim')
 
 call dein#end()
 syntax enable
