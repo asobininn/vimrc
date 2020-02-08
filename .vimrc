@@ -24,6 +24,8 @@ set wrapscan
 set hlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
+set foldmethod=marker
+
 "=========
 " Shougo/neocomplete
 "=========
@@ -56,8 +58,8 @@ let g:clang_cpp_options = '-std=c++1z -O2 '
 "=========
 " clang format
 "=========
-let g:clang_format_auto = 1
-let g:clang_format_style = 'Google'
+"let g:clang_format_auto = 1
+"let g:clang_format_style = 'Google'
 let g:clang_check_syntax_auto = 1
 
 "=========
@@ -208,5 +210,6 @@ call dein#add('Shougo/dein.vim')
 	call dein#add('junegunn/goyo.vim')
 
 call dein#end()
-syntax enable
 
+syntax enable
+colorscheme darkblue
